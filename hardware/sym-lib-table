@@ -1,0 +1,7 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "GSDA213") (type "KiCad") (uri "${KIPRJMOD}/lib_sch/GSDA213.kicad_sym") (options "") (descr ""))
+	(lib (name "SK6812-SIDE") (type "KiCad") (uri "${KIPRJMOD}/lib_sch/SK6812-SIDE.kicad_sym") (options "") (descr ""))
+	(lib (name "badgelife_shitty_addon_v169bis") (type "Legacy") (uri "${KIPRJMOD}/lib_sch/badgelife_shitty_addon_v169bis.lib") (options "") (descr ""))
+	(lib (name "Cherry_SK6812") (type "Legacy") (uri "${KIPRJMOD}/lib_sch/Cherry_SK6812.lib") (options "") (descr ""))
+)
