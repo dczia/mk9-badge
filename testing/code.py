@@ -6,15 +6,16 @@ LED test: all 15 LEDs cycle red → green → blue.
     across in 0.5 s — 1 second total per color.
   - Tilt the badge on X or Y axis to change the wipe direction.
 
-Key test: press any key to fast-flash that key's LED white at 10 Hz.
+Key test: press any key to fast-flash that key's LED red → green → blue.
+  Held keys are excluded from the background wipe until released.
   All 9 keys can be held simultaneously (NKRO test).
 
 Accelerometer test: tilt X/Y changes the wipe direction live.
-  Tilt right  → left-to-right wipe
-  Tilt left   → right-to-left wipe
-  Tilt toward → top-to-bottom wipe
-  Tilt away   → bottom-to-top wipe
-  Flat        → keeps the last direction
+  X: negative = tilted left,   positive = tilted right
+  Y: negative = top edge down, positive = bottom edge down
+  Z: ignored
+  The wipe always sweeps toward whichever edge is tilted down.
+  Flat → keeps the last direction
 """
 
 import board
@@ -29,7 +30,7 @@ import time
 NUM_PIXELS = 15
 
 pixels = neopixel.NeoPixel(
-    board.GP22, NUM_PIXELS,
+    board.GP21, NUM_PIXELS,
     brightness=0.5,
     auto_write=False,
     pixel_order=neopixel.GRB,
@@ -37,7 +38,7 @@ pixels = neopixel.NeoPixel(
 
 row_pins = (board.GP27, board.GP26, board.GP16)
 col_pins = (board.GP17, board.GP13, board.GP0)
-keys = keypad.KeyMatrix(row_pins, col_pins, columns_to_anodes=False)
+keys = keypad.KeyMatrix(row_pins, col_pins, columns_to_anodes=True)
 
 try:
     import adafruit_msa3xx
@@ -103,8 +104,15 @@ COLORS = [
 
 HOLD_TIME      = 0.5          # seconds each color is held solid
 WIPE_STEP_TIME = 0.10         # 5 groups × 0.10 s = 0.5 s wipe
-FLASH_HALF     = 0.05         # 10 Hz white flash (50 ms half-period)
+FLASH_HALF     = 0.05         # held-key R/G/B flash step time (50 ms/color)
 ACCEL_DEAD     = 1.0          # m/s² — below this on both axes = "flat"
+
+# Accelerometer-fault indicator: solid-fill flash, no wipe, all LEDs together.
+ERROR_PATTERN = [
+    COLORS[0], COLORS[0], COLORS[0], COLORS[2], COLORS[1],   # R R R B G
+    COLORS[0], COLORS[0], COLORS[0], COLORS[2], COLORS[1],   # R R R B G
+]
+ERROR_STEP_TIME = 0.3          # seconds each color in ERROR_PATTERN is held
 
 # ---------------------------------------------------------------------------
 # State
@@ -121,26 +129,49 @@ wipe_step   = 0
 # Per-LED colour buffer (modified as the wipe advances)
 led_buf = [COLORS[current_color]] * NUM_PIXELS
 
-key_held   = [False] * 9
-flash_on   = True
-last_flash = time.monotonic()
+key_held       = [False] * 9
+key_flash_step = 0            # cycles through COLORS (R -> G -> B) while held
+last_flash     = time.monotonic()
+
+error_step       = 0
+error_step_start = time.monotonic()
+if not ACCEL_OK:
+    led_buf = [ERROR_PATTERN[error_step]] * NUM_PIXELS
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
+def _mark_accel_failed():
+    """Sensor can't be read from / won't respond — switch to the error flash."""
+    global ACCEL_OK, error_step, error_step_start
+    ACCEL_OK          = False
+    error_step        = 0
+    error_step_start  = time.monotonic()
+
+
 def _read_direction():
-    """Return 'LR'/'RL'/'TB'/'BT' from accel tilt, or None if flat/unavailable."""
+    """Return 'LR'/'RL'/'TB'/'BT' — wipe sweeps toward whichever edge is tilted
+    down — or None if flat/unavailable."""
     if not ACCEL_OK:
         return None
     try:
-        ax, ay, _ = sensor.acceleration
+        raw_x, raw_y, _ = sensor.acceleration
     except Exception:
+        _mark_accel_failed()
         return None
+    # Sensor is mounted rotated 90° relative to the board: its raw X axis
+    # reads the board's top/bottom tilt, and its raw Y axis reads the
+    # board's left/right tilt.
+    ax, ay = raw_y, -raw_x
     if abs(ax) < ACCEL_DEAD and abs(ay) < ACCEL_DEAD:
         return None
     if abs(ax) >= abs(ay):
+        # ax > 0: right edge down -> sweep ends at right (left-to-right)
+        # ax < 0: left edge down  -> sweep ends at left  (right-to-left)
         return 'LR' if ax > 0 else 'RL'
+    # ay > 0: bottom edge down -> sweep ends at bottom (top-to-bottom)
+    # ay < 0: top edge down    -> sweep ends at top    (bottom-to-top)
     return 'TB' if ay > 0 else 'BT'
 
 
@@ -165,9 +196,13 @@ def _finish_wipe():
     phase_start   = time.monotonic()
 
 
+print("MK9 Badge Hardware Tester booted. Accelerometer OK: {}".format(ACCEL_OK))
+
 # Prime display
 pixels.fill(COLORS[current_color])
 pixels.show()
+
+last_accel_print = time.monotonic()
 
 # ---------------------------------------------------------------------------
 # Main loop
@@ -176,7 +211,13 @@ while True:
     now = time.monotonic()
 
     # --- Phase logic ---
-    if phase == 'hold':
+    if not ACCEL_OK:
+        if now - error_step_start >= ERROR_STEP_TIME:
+            error_step        = (error_step + 1) % len(ERROR_PATTERN)
+            error_step_start  = now
+            led_buf           = [ERROR_PATTERN[error_step]] * NUM_PIXELS
+
+    elif phase == 'hold':
         if now - phase_start >= HOLD_TIME:
             _start_wipe()
 
@@ -198,21 +239,37 @@ while True:
     if event:
         if event.pressed:
             key_held[event.key_number] = True
+            print("key {} down".format(event.key_number))
         elif event.released:
             key_held[event.key_number] = False
+            print("key {} up".format(event.key_number))
 
-    # --- 10 Hz flash toggle ---
+    # --- Held-key R/G/B flash step ---
     if now - last_flash >= FLASH_HALF:
-        flash_on   = not flash_on
-        last_flash = now
+        key_flash_step = (key_flash_step + 1) % len(COLORS)
+        last_flash     = now
+
+    # --- 1 Hz accelerometer print ---
+    if now - last_accel_print >= 1.0:
+        last_accel_print = now
+        if ACCEL_OK:
+            try:
+                raw_x, raw_y, az = sensor.acceleration
+                ax, ay = raw_y, -raw_x  # board-relative: see _read_direction()
+                print("accel: x={:.2f} y={:.2f} z={:.2f} m/s^2".format(ax, ay, az))
+            except Exception as e:
+                print("accel: read error: {}".format(e))
+                _mark_accel_failed()
+        else:
+            print("accel: not available")
 
     # --- Render ---
     for i in range(NUM_PIXELS):
         pixels[i] = led_buf[i]
 
-    # Overlay: held keys fast-flash white
+    # Overlay: held keys fast-flash R -> G -> B, excluded from the wipe
     for k in range(9):
         if key_held[k]:
-            pixels[k] = (255, 255, 255) if flash_on else (0, 0, 0)
+            pixels[k] = COLORS[key_flash_step]
 
     pixels.show()
