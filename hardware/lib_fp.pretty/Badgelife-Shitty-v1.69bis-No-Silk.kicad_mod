@@ -1,0 +1,158 @@
+(footprint "Badgelife-Shitty-v1.69bis-No-Silk"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Through hole angled pin header, 2x02, 2.54mm pitch, 6mm pin length, double rows")
+	(tags "Through hole angled pin header THT 2x02 2.54mm double row")
+	(property "Reference" "X101"
+		(at -1.27 -2.54 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e458405a-7ce0-4b75-a0aa-9a675721f739")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Badgelife_sao_connector_v169bis"
+		(at 0 -4.59486 0)
+		(layer "B.SilkS")
+		(hide yes)
+		(uuid "38baf585-7f66-4431-bda5-53734c75ebad")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1a6252c2-9e45-466e-bedc-9cc1c87ad9ea")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "88d4f88b-542b-4cff-85b7-fc3e49c45d06")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetfile "dc31-front.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -6.25 -3)
+		(end 6.25 -3)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "d4268bcd-0132-4167-b2f3-63ac412b3ff7")
+	)
+	(fp_line
+		(start -6.25 3)
+		(end -6.25 -3)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "ce561d1f-0889-4186-9089-7f1254515321")
+	)
+	(fp_line
+		(start -6.25 3)
+		(end 6.25 3)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "d2e942a3-b863-4d1a-a973-a73b614be15b")
+	)
+	(fp_line
+		(start 6.25 3)
+		(end 6.25 -3)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "3d0a98aa-7a00-4b66-aa2d-2ae943a9c343")
+	)
+	(pad "1" thru_hole oval
+		(at -2.54 -1.27)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e0a9547f-8457-4596-a951-d37d61550ac8")
+	)
+	(pad "2" thru_hole oval
+		(at -2.54 1.27)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "386e6670-6c41-4d60-9a4c-8233334d8f7a")
+	)
+	(pad "3" thru_hole circle
+		(at 0 -1.27)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "cc7ac198-4297-448a-bdca-c19b5b02bd93")
+	)
+	(pad "4" thru_hole oval
+		(at 0 1.27)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2559921e-c718-4466-a1aa-272ee3517e53")
+	)
+	(pad "5" thru_hole circle
+		(at 2.54 -1.27)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1fd0d753-f2e3-417f-aa19-df88473db878")
+	)
+	(pad "6" thru_hole oval
+		(at 2.54 1.27)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "5a3765d7-4465-4bfe-b31a-05cc67d83d9d")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3D/PinSocket_2x03_P2.54mm_Vertical.step"
+		(offset
+			(xyz -2.54 1.27 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 -90)
+		)
+	)
+)

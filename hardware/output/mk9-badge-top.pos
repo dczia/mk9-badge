@@ -1,0 +1,27 @@
+### Footprint positions - created on 2026-07-14T11:04:59 ###
+### Printed by KiCad version 10.0.4
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val         Package                                         PosX       PosY       Rot  Side
+C15       0.1uF       C_0603_1608Metric                            12.9794    47.6250  -90.0000  top
+C16       0.1uF       C_0603_1608Metric                            12.9794    28.5812  -90.0000  top
+C17       0.1uF       C_0603_1608Metric                            12.9794     9.5374  -90.0000  top
+D4        D_Schottky  D_SOD-123F                                   10.0076    60.5536  -90.0000  top
+D5        D_Schottky  D_SOD-123F                                   29.0576    60.5536  -90.0000  top
+D6        D_Schottky  D_SOD-123F                                   48.1076    60.5566  -90.0000  top
+D7        D_Schottky  D_SOD-123F                                   10.0076    41.3796  -90.0000  top
+D8        D_Schottky  D_SOD-123F                                   29.0830    41.4304  -90.0000  top
+D9        D_Schottky  D_SOD-123F                                   48.1076    41.4528  -90.0000  top
+D10       D_Schottky  D_SOD-123F                                   10.0076    22.3804  -90.0000  top
+D11       D_Schottky  D_SOD-123F                                   29.1084    22.3296  -90.0000  top
+D12       D_Schottky  D_SOD-123F                                   48.1330    22.3296  -90.0000  top
+D13       WS2812B     LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update    18.4500    49.7095    0.0000  top
+D14       WS2812B     LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update    37.5000    49.7095    0.0000  top
+D15       WS2812B     LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update    56.5500    49.7095    0.0000  top
+D16       WS2812B     LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update    18.4500    30.6595    0.0000  top
+D17       WS2812B     LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update    37.5000    30.6595    0.0000  top
+D18       WS2812B     LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update    56.5500    30.6595    0.0000  top
+D19       WS2812B     LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update    18.4500    11.6095    0.0000  top
+D20       WS2812B     LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update    37.5000    11.6095    0.0000  top
+D21       WS2812B     LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update    56.5500    11.6095    0.0000  top
+## End

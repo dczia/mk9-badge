@@ -1,8 +1,8 @@
 {
   "board": {
-    "active_layer": 1,
+    "active_layer": 2,
     "active_layer_preset": "",
-    "auto_track_width": false,
+    "auto_track_width": true,
     "hidden_netclasses": [],
     "hidden_nets": [],
     "high_contrast_mode": 0,
@@ -10,7 +10,7 @@
     "opacity": {
       "images": 0.6,
       "pads": 1.0,
-      "shapes": 0.9100000262260437,
+      "shapes": 1.0,
       "tracks": 1.0,
       "vias": 1.0,
       "zones": 0.6
@@ -49,9 +49,11 @@
       "drc_exclusions",
       "locked_item_shadows",
       "conflict_shadows",
-      "shapes"
+      "shapes",
+      "board_outline_area",
+      "ly_points"
     ],
-    "visible_layers": "00000000_00000000_00000002_02000005",
+    "visible_layers": "ffffffff_ffffffff_ffffffff_ffffffdf",
     "zone_display_mode": 0
   },
   "git": {
@@ -61,7 +63,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "mk9-badge.kicad_prl",
+    "filename": "SAO-adapter.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {

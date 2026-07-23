@@ -1,0 +1,57 @@
+### Footprint positions - created on 2026-07-14T11:04:59 ###
+### Printed by KiCad version 10.0.4
+## Unit = mm, Angle = deg.
+## Side : bottom
+# Ref     Val              Package                                           PosX       PosY       Rot  Side
+C1        15pF             C_0603_1608Metric                             -28.8934    35.0696  180.0000  bottom
+C2        15pF             C_0603_1608Metric                             -28.9442    41.1148    0.0000  bottom
+C3        0.1uF            C_0603_1608Metric                             -10.7500    45.0200    0.0000  bottom
+C4        1uF              C_0603_1608Metric                             -24.7142    40.4876   90.0000  bottom
+C5        0.1uF            C_0603_1608Metric                             -20.9804    49.3522    0.0000  bottom
+C6        0.1uF            C_0603_1608Metric                             -23.1902    40.4876   90.0000  bottom
+C7        1uF              C_0603_1608Metric                             -25.8100    53.8000  -90.0000  bottom
+C8        0.1uF            C_0603_1608Metric                             -24.2900    53.8000  -90.0000  bottom
+C9        0.1uF            C_0603_1608Metric                             -28.3700    53.8000  -90.0000  bottom
+C10       0.1uF            C_0603_1608Metric                             -22.7700    53.8000  -90.0000  bottom
+C11       0.1uF            C_0603_1608Metric                             -35.0012    46.5074  180.0000  bottom
+C12       0.1uF            C_0603_1608Metric                             -46.5100    49.6100   90.0000  bottom
+C13       1uF              C_0603_1608Metric                             -23.5966    64.2620   90.0000  bottom
+C14       1uF              C_0603_1608Metric                             -16.8656    65.9638   90.0000  bottom
+C18       0.1uF            C_0603_1608Metric                             -68.3200    49.3700  -90.0000  bottom
+C19       0.1uF            C_0603_1608Metric                             -49.6100     6.4700  180.0000  bottom
+C20       0.1uF            C_0603_1608Metric                              -6.6400    25.6200   90.0000  bottom
+D2        D_Schottky       D_SOD-123F                                    -26.8732    65.1764    0.0000  bottom
+D3        D_Schottky       D_SOD-123F                                     -7.3660    58.8772  -90.0000  bottom
+D22       SK6812           LED_SK6812_4020                               -71.8602    49.9087  -90.0000  bottom
+D23       SK6812           LED_SK6812_4020                               -71.8602    24.9174  -90.0000  bottom
+D24       SK6812           LED_SK6812_4020                               -50.0498     3.1400  180.0000  bottom
+D25       SK6812           LED_SK6812_4020                               -24.9700     3.1400  180.0000  bottom
+D26       SK6812           LED_SK6812_4020                                -3.1602    24.9863   90.0000  bottom
+D27       SK6812           LED_SK6812_4020                                -3.1602    49.9813   90.0000  bottom
+FID1      Fiducial         Fiducial_1mm_Mask2mm                          -71.0438    67.1576  180.0000  bottom
+FID2      Fiducial         Fiducial_1mm_Mask2mm                          -71.0438     8.0264  180.0000  bottom
+FID3      Fiducial         Fiducial_1mm_Mask2mm                           -4.0132     8.0264  180.0000  bottom
+FID4      Fiducial         Fiducial_1mm_Mask2mm                           -4.0132    67.1576  180.0000  bottom
+J1        USB-C            USB_C_Receptacle_HCTL_HC-TYPE-C-16P-01A       -37.5000    72.6000    0.0000  bottom
+R1        1k               R_0603_1608Metric                             -26.2890    38.0238   90.0000  bottom
+R2        5.1k             R_0603_1608Metric                             -30.9600    67.5700  -90.0000  bottom
+R3        5.1k             R_0603_1608Metric                             -44.0100    67.5700  -90.0000  bottom
+R4        27R              R_0603_1608Metric                             -27.2200    60.3500   90.0000  bottom
+R5        27R              R_0603_1608Metric                             -28.8900    60.3500  -90.0000  bottom
+R6        10k              R_0603_1608Metric                             -53.2384    69.6468    0.0000  bottom
+R7        1k               R_0603_1608Metric                             -49.7300    49.6000  -90.0000  bottom
+R8        10k              R_0603_1608Metric                             -48.1400    49.6000   90.0000  bottom
+R9        10R              R_0603_1608Metric                             -20.0914    46.2534    0.0000  bottom
+R10       4.7k             R_0603_1608Metric                             -61.1378    66.5734    0.0000  bottom
+R11       4.7k             R_0603_1608Metric                             -61.1378    65.0494    0.0000  bottom
+R12       4.7k             R_0603_1608Metric                             -17.0180    43.5102  -90.0000  bottom
+R13       4.7k             R_0603_1608Metric                             -17.0180    46.5450   90.0000  bottom
+SW1       Boot_Select      SW_SPST_EVQP7C                                -45.9700    72.6500    0.0000  bottom
+SW2       SW_SPDT          SW_SPDT_CK-JS102011SAQN                       -26.3200    72.4200    0.0000  bottom
+SW3       Reset            SW_SPST_EVQP7C                                -51.6300    72.6400    0.0000  bottom
+U1        GSDA213          Kionix_LGA-12_2x2mm_P0.5mm_LayoutBorder2x4y   -13.8900    44.3325   90.0000  bottom
+U2        RP2040           QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm           -28.2425    47.5200  180.0000  bottom
+U3        NCP115ASN330T2G  SOT-23-5                                      -20.4923    65.9740  180.0000  bottom
+U4        W25Q128JVSIM     SOIC-8_5.3x5.3mm_P1.27mm                      -42.0375    49.5900   90.0000  bottom
+Y1        ABM8-272-T3      Crystal_SMD_Abracon_ABM8G-4Pin_3.2x2.5mm      -28.9306    38.0746   90.0000  bottom
+## End
