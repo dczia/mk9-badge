@@ -17,12 +17,22 @@ $BlockSize = 512
 $TrimBytes = [uint32]($SizeMB * 1MB)
 $FlashEnd  = $FlashBase + $TrimBytes
 
-$bytes = [System.IO.File]::ReadAllBytes($InFile)
+# [System.IO.File] methods use .NET's Environment.CurrentDirectory, which can
+# drift from PowerShell's own working directory ($PWD / Get-Location) - e.g.
+# in the VS Code integrated terminal. Resolve against $PWD explicitly so
+# relative paths behave the way the prompt suggests they should.
+$ResolvedInFile = if ([System.IO.Path]::IsPathRooted($InFile)) { $InFile } else { Join-Path $PWD.Path $InFile }
+if (-not (Test-Path -LiteralPath $ResolvedInFile)) {
+    throw "Input file not found: $ResolvedInFile"
+}
+$OutFile = if ([System.IO.Path]::IsPathRooted($OutFile)) { $OutFile } else { Join-Path $PWD.Path $OutFile }
+
+$bytes = [System.IO.File]::ReadAllBytes($ResolvedInFile)
 if ($bytes.Length % $BlockSize -ne 0) {
     throw "Input file size is not a multiple of $BlockSize bytes - not a valid UF2 file."
 }
 $totalBlocks = $bytes.Length / $BlockSize
-Write-Host "Read ${InFile}: $totalBlocks blocks ($($bytes.Length) bytes)"
+Write-Host "Read ${ResolvedInFile}: $totalBlocks blocks ($($bytes.Length) bytes)"
 
 $kept = New-Object System.Collections.Generic.List[byte[]]
 
