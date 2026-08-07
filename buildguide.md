@@ -14,15 +14,23 @@ Thanks for purchasing the 2026 DCZia “mk9” badge! This badge is a throwback 
 
 The badge is shipped with the frosted diffuser, and back case pre installed. You will need to remove these pieces to safely solder on the keyswitches. Use the included allan key to disassemble the case.
 
-[]()
+![BuildPhoto1](badge_build_photos/badge1.jpeg?raw=true "Badge1")
+
+![BuildPhoto2](badge_build_photos/badge2.jpeg?raw=true "Badge2")
 
 Now you can install one keyswitch, and solder it onto the board. Please go slow, and try to line up the switch carefully. Sometimes some tape can be useful to keep the switch in place. Solder on all 9 key switches.
 
+![BuildPhoto3](badge_build_photos/badge3.jpeg?raw=true "Badge3")
+![BuildPhoto4](badge_build_photos/badge4.jpeg?raw=true "Badge4")
+![BuildPhoto5](badge_build_photos/badge5.jpeg?raw=true "Badge5")
+
+Reassemble the case, and gently screw it back together. 
+
 Next solder on the battery pack. The red wire will go to the “+” pad on the back of the pcb, and the black wire to the “-” pad. The badge can be fully powered over USB C if you do not wish to attach the battery pack.
 
-After the battery pack is installed, reassemble the case, and gently screw it back together. 
-
 Next, using the round double sticky tape, apply it to the battery pack, and then stick it to the frosted diffuser. Press gently on the battery pack for about 15 seconds to make sure you have good adhesion.
+
+![BuildPhoto5](badge_build_photos/badge6.jpeg?raw=true "Badge6")
 
 Finally install the batteries. Goto www.dczia.net, and click on the badge to be taken to the Github page for this project. Download the release which will have the source code, and a u2f file. Plug the badge into your computer and hold down the “Boot” button on the badge while plugging it in. You will need a pen or toothpick to press in the switch while plugging in the USB C cable. This will place the badge into bootloader mode. A usb drive should appear on your machine if you are using something common (Win / Mac) or if you don’t have an automounter and you are running linux, you can probably figure out how to mount the device as a drive. Drag the U2F file over to this drive. It will disconnected as soon as the transfer completes and the badge should reboot and begin showing some blinky lights!
 
