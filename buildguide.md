@@ -32,7 +32,15 @@ Next, using the round double sticky tape, apply it to the battery pack, and then
 
 ![BuildPhoto5](badge_build_photos/badge6.jpeg?raw=true "Badge6")
 
-Finally install the batteries. Goto www.dczia.net, and click on the badge to be taken to the Github page for this project. Download the release which will have the source code, and a u2f file. Plug the badge into your computer and hold down the “Boot” button on the badge while plugging it in. You will need a pen or toothpick to press in the switch while plugging in the USB C cable. This will place the badge into bootloader mode. A usb drive should appear on your machine if you are using something common (Win / Mac) or if you don’t have an automounter and you are running linux, you can probably figure out how to mount the device as a drive. Drag the U2F file over to this drive. It will disconnected as soon as the transfer completes and the badge should reboot and begin showing some blinky lights!
+Finally install the batteries. The badge is pre-flashed with firmware and should be good to go!
+
+Short press a key to see a light flash, long press a key to change the color theme. Tilt for accelerometer to affect the lights.
+
+
+## Manual Flashing (Only if you want to update or write new code)
+
+The badge is pre flashed, but you can run the script in the repo to flash the badge, or we will have a U2F uploaded which you can use as well.
+Goto www.dczia.net, and click on the badge to be taken to the Github page for this project. Download the release which will have the source code, and a u2f file. Plug the badge into your computer and hold down the “Boot” button on the badge while plugging it in. You will need a pen or toothpick to press in the switch while plugging in the USB C cable. This will place the badge into bootloader mode. A usb drive should appear on your machine if you are using something common (Win / Mac) or if you don’t have an automounter and you are running linux, you can probably figure out how to mount the device as a drive. Drag the U2F file over to this drive. It will disconnected as soon as the transfer completes and the badge should reboot and begin showing some blinky lights!
 
 ## Badge Manual
 
